@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: devops-profile-ingress
+spec:
+  rules:
+  - host: samidhawani.in
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: devops-profile-service
+            port:
+              number: 8081

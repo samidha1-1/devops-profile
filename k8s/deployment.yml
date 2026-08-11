@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-profile-deployment
+  labels:
+    app: devops-profile
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-profile
+  template:
+    metadata:
+      labels:
+        app: devops-profile
+    spec:
+      containers:
+      - name: devops-profile-container
+        image: samidha7/devops-profile:latest
+        ports:
+        - containerPort: 8081
