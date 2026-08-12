@@ -20,9 +20,8 @@ pipeline {
         stage('Build docker image') {
             steps {
                 echo 'Building docker image...'
-                sh 
-                '''
-                    docker build -t $IMAGE_NAME .
+                sh '''
+                docker build -t $IMAGE_NAME .
                 '''
             }
         }
@@ -31,8 +30,8 @@ pipeline {
             steps {
                 echo 'Stopping old docker container...'
                 sh '''
-                    docker stop $CONTAINER_NAME || true
-                    docker rm $CONTAINER_NAME || true
+                docker stop $CONTAINER_NAME || true
+                docker rm $CONTAINER_NAME || true
                 '''
             }
         }
@@ -40,9 +39,8 @@ pipeline {
         stage('Run new container') {
             steps {
                 echo 'Running docker container...'
-                sh 
-                '''
-                    docker run -d --name $CONTAINER_NAME -p 80:80 $IMAGE_NAME
+                sh '''
+                docker run -d --name $CONTAINER_NAME -p 80:80 $IMAGE_NAME
                 '''
             }
         }
